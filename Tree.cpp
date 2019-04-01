@@ -200,7 +200,7 @@ Tree& Tree::insert(int i) {
             //return -2;
             }
         int Tree::parent(int i){
-            if(!head){
+            /*if(!head){
                 throw std::exception();
             }
             else{
@@ -214,7 +214,7 @@ Tree& Tree::insert(int i) {
                 return head->left->parent(i);
             }
         }
-            }
+            }*/
         void Tree::print(){
          if (head){
             if (head->left){head->left->print() ;}
