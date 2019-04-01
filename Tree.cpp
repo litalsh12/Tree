@@ -200,22 +200,34 @@ Tree& Tree::insert(int i) {
             return -2;
             }
         int Tree::parent(int i){
-           /* if(!head){
+           if(!head){
                 throw std::exception();
             }
             else{
-                if(head->right->head->value==i || head->left->head->value){
+                if(!head->right){
+                if(head->right->head->value==i ){
                  return head->value;
                 }
-               else if(head->value < i) {
+                }
+                else if(!head->left){
+                    if(head->left->head->value==i){
+                        return head->value;
+                    }
+                }
+                
+               else if(head->value < i && head->right){
                 return head->right->parent(i);
             }
-                else{
+                else if(head->value < i && head->left){
                 return head->left->parent(i);
             }
-        }*/
-        return 0;
+            else return 0;
             }
+        }
+       // return 0;
+           }
+
+
         void Tree::print(){
          if (head){
             if (head->left){head->left->print() ;}
