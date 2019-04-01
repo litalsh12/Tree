@@ -179,7 +179,7 @@ Tree& Tree::insert(int i) {
             return -1;
         }
         int Tree::left(int i){
-                 if(!contains(i)){
+/*                 if(!contains(i)){
               throw std::exception();
             }
             if(head){
@@ -196,11 +196,11 @@ Tree& Tree::insert(int i) {
                 }else{
                     return head->left->left(i);
                 }
-            }
-            //return -2;
+            }*/
+            return -2;
             }
         int Tree::parent(int i){
-            if(!head){
+            /*if(!head){
                 throw std::exception();
             }
             else{
@@ -213,8 +213,8 @@ Tree& Tree::insert(int i) {
                 else{
                 return head->left->parent(i);
             }
-        }
-        //return 0;
+        }*/
+        return 0;
             }
         void Tree::print(){
          if (head){
