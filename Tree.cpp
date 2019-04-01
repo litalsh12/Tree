@@ -1,6 +1,5 @@
 #include "Tree.hpp"
 #include <iostream>
-
 using namespace std;
 node::node(){
 node* n=NULL;
