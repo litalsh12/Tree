@@ -14,6 +14,7 @@ namespace ariel
 
     class Tree{
         public:
+        int _size;
             Tree(); 
             ~Tree(); 
             int root();
