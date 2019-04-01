@@ -104,11 +104,14 @@ Tree& Tree::insert(int i) {
                    }
                     else{
                         //return *this;
+                        if(head->right&&head->right->head){
                         node* temp=head->right->head;
+                        if(head->left&&head->left->head){
                         head=head->left->head;
                         head->right->head=temp;
                         return *this;
-
+                        }
+                        }
                     }
                 }
                    else if(head->value < i){
