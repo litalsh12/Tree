@@ -32,7 +32,8 @@ int main() {
   .CHECK_EQUAL (emptytree.contains(5), false)
   .CHECK_THROWS(emptytree.remove(5))
   .CHECK_EQUAL (emptytree.size() ,0)
-  
+    .print()
+
   .CHECK_EQUAL (threetree.size(), 3)
   .CHECK_EQUAL (threetree.root(), 5)
   .CHECK_EQUAL (threetree.parent(3), 5)
@@ -50,8 +51,8 @@ int main() {
    .CHECK_OK (testtree.insert(7))
    .CHECK_THROWS(testtree.remove(5))
    .CHECK_OK(testtree.remove(7))
-   .CHECK_EQUAL(testtree.left(9),NULL)
-   .CHECK_EQUAL(testtree.right(9),NULL)
+   .CHECK_THROWS(testtree.left(9))
+   .CHECK_THROWS(testtree.right(9))
    .CHECK_THROWS (testtree.insert(9))
    .CHECK_OK (testtree.insert(3))
    .CHECK_OK (testtree.insert(15))

@@ -230,7 +230,7 @@ Tree& Tree::insertTree(Tree* addTree) {
             }
             //return -2;
             }
-        int Tree::parent(int i){
+   int Tree::parent(int i){
            if(!head){
                 throw std::exception();
             }
@@ -240,7 +240,7 @@ Tree& Tree::insertTree(Tree* addTree) {
                  return head->value;
                 }
                 }
-                else if((head->left) && head->left->head){
+                if((head->left) && head->left->head){
                     if(head->left->head->value==i){
                         return head->value;
                     }
@@ -249,7 +249,7 @@ Tree& Tree::insertTree(Tree* addTree) {
             if( head->value < i && head->right ){
                 return head->right->parent(i);
             }
-            else if(head->value > i && head->left ){
+            if(head->value > i && head->left ){
                 return head->left->parent(i);
             }}
              return 0;
