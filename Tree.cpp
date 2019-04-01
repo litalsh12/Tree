@@ -1,226 +1,220 @@
-#include "Tree.hpp"
 #include <iostream>
+#include "Tree.hpp"
 using namespace std;
-node::node(){
-node* n=NULL;
-this->right=NULL;
-this->left=NULL;
+using namespace ariel;
+int count=0;
+//counstractor and destructor for Tree
+Tree::Tree():head(NULL) {
+    int _size=0;
 }
-
-node::node(int data){
-node* n=NULL;
-this->value=data;
-this->right=NULL;
-this->left=NULL;
+Tree::~Tree(){
+  delete head;
 }
-using  ariel::Tree;
+//counstractor and destructor for TreeNode
+node::node(int i):right(NULL),left(NULL) {
+    value=i;
 
-ariel::Tree::Tree(){
- head=NULL;
-  int s=0;
 }
-
-
-node* ariel::Tree::insertRec(node* t, int i)
-    {
-        if(t == NULL)
-        {
-            t = new node(i);
-            s++;
-            return t;
+node::~node(){
+  delete right;
+  delete left;
+}
+int Tree::root(){
+    if(!head) {throw std::exception();}
+    return head->value;
+}
+bool Tree::contains(int i){
+    if (!head){
+        return false;
         }
-        else if(i < t->value){
-          t->left=insertRec(t->left , i);
+    if (head->value==i){
+        return true;}
+    else if (i<head->value){
+        if (!(head->left)){
+            return false;
+            }
+        else return head->left->contains(i);
+    }
+    else{
+        if (!(head->right)){
+            return false;}
+        else return head->right->contains(i);
+    }
+    return false;
+}
+
+Tree& Tree::insert(int i) {
+    if(contains(i)) {
+        throw std::exception();
         }
-        else {
-           t->right = insertRec(t->right , i);
-          }
-}
-
-void ariel::Tree::insert(int i){
-   if(!head){
-   head= new node(i);//if the tree is empty
-    s=1;
- }
- else if(!contains(i))
-{
- insertRec(head,i);
- 
- }else {
-      throw std::invalid_argument("number already exist");
-}
-
-}
-
-bool ariel::Tree::contains(int i){
-//return true;
-if(!head){
-  throw std::invalid_argument("tree isnt exist");
-}else{
-  temp=head;
-  while(temp){
-    if(temp->value==i){
-      return true;
-    }else if(temp->value>i){
-      temp=temp->left;
-    }else{
-      temp=temp->right;
+    if (!head){
+    head=new node(i);
+    _size=1;
+    return *this;
     }
-  }
-}
-return false;
-}
-
-node* ariel::Tree::find(int i){
- // return NULL;
-  if(head==NULL){
-   throw std::invalid_argument("head isn't exist");
-   // return NULL;
-  }
-  temp=head;
-  while(temp!=NULL){
-   if(temp->value==i){
-     return temp;
-   }else if(i < temp->value){
-     temp=temp->left;
-   }else
-   {
-     temp=temp->right;
-   }
-}//if(temp==NULL) {
- //  throw std::invalid_argument("number isn't exist");
-//}
-return NULL; 
-}
-
- 
-void ariel::Tree::remove(int i){
-     temp=find(i);
-
-     if(temp==NULL) {
-        throw std::invalid_argument("number isn't exist");
-     }else
-     {
-       delete(temp);
-       s--;
-     }
-}
-
-//int ariel::Tree::parentRec(int data, node* t, node* p){
-	//if(t!=NULL)
-	//{
-		//if(t->value==data)
-			//return p->value;
-		//if(t->value>data){
-			//p=t;
-			//return parentRec(data, t->left,p);
-		//}
-		//else{
-		//	p=t;
-		//	return parentRec(data, t->right,p);
-	//	}
-	//}
- // else return -1;
- //return 1;
-//}
-int ariel::Tree::parent(int data){
-      temp = find(data);
-      //if(temp==NULL){
-          //throw std::invalid_argument("number isn't exist");      
-        //   }
-      //   else if(data==head->value)
-    //     {
-  //         throw std::invalid_argument("tree's root");
-//}
- //   else{
-   if(temp){
-     temp=head;
-   while(temp!=NULL){
-     if(data<temp->value){
-       if(temp->left->value==data){
-        return temp->value;
-       }else{
-         temp=temp->left;
-       }
-     }else{
-       if(temp->right->value==data){
-         return temp->value;
-       }else
-       {
-         temp=temp->right;
-       }
-     }
-
-}
-throw std::invalid_argument("number isn't exist");
-}
-}
-   int ariel::Tree::left(int i){
-    if(!head){
-      throw std::invalid_argument("number isn't exist");
+    else if(i<head->value){
+        if(!(head->left)) {
+            head->left=new Tree();
+            head->left->head=new node(i);
+            head->left->_size=1;
+            this->_size++;
+            return *this;
+            }
+        else return head->left->insert(i);
+        }
+    else{
+            if(!(head->right)) {
+                head->right=new Tree();
+                head->right->_size=1;
+                head->right->head=new node(i);
+               this->_size++;
+                return *this;}
+            else return  head->right->insert(i);
+            
     }
-    temp=head;
-    while(temp){
-      if(temp->value==i){
-        return temp->left->value;
-      }else if(temp->value >i){
-        temp = temp->left;
-      }else
-      {
-        temp=temp->right;
-      }
-    }
-    throw std::invalid_argument("number isn't exist");
-
-    //if(!head){
-       //throw std::invalid_argument("number isn't exist");
-    //}
-     //if(!contains(i)){
-      //  throw std::invalid_argument("number isn't exist");
-     //}
-       //temp = head;
-       //while(temp){
-         //if(temp->value==i){
-           //return temp->left->value;
-         //}if(i>temp->value){
-          // temp = temp->right;
-        // }else{
-         //  temp = temp->left;
-       //  }
-     //  }
-
-   } 
-    
-   int ariel::Tree::right(int i){
-    if(!head){
-       throw std::invalid_argument("number isn't exist");
-     }
-  // node* temp=find(i);
-    //return temp->right->value; 
-   return 3;
-   } 
-   
-int ariel::Tree::root(){ 
-  return head->value;
-} 
-
-void ariel::Tree::printRec(node* t){ 
-	
-    if (t != NULL) {  
-		printRec(t->right);  
-	  
-		cout<<endl;  
-		for (int i = 0; i < 1; i++)  
-			cout<<" ";  
-	 	cout<<t->value<<"\n";  
-		printRec(t->left);  
-	}  
+    return *this;
 }
-void ariel::Tree::print(){ 
-	printRec(head);  
-}	
+        Tree& Tree::remove(int i){
+    if(!contains(i)){
+        throw std::exception();
+            }
+            else if (head){ 
+                if(head->value==i){
+                  if(!(head->left && head->right))
+                   {
+                       head=NULL;
+                        this->_size--;
 
-int ariel::Tree::size(){
-return s;
-}
+                      return *this;
 
+                   }
+                   else if((!head->left)){
+                       head=head->right->head;
+                     this->_size--;
+
+                       return *this;
+                   }
+                   else if(!(head->right)){
+                       head=head->left->head;
+                        this->_size--;
+
+                       return *this;
+
+                   }
+                //    else{
+                //        node* temp=head->right->head;
+                //        head=head->left->head;
+                //        head->right->head=temp;
+                //        return *this;
+
+                //    }
+                }
+                   else if(head->value < i){
+                       return head->right->remove(i);
+                   this->_size--;
+
+                   }
+                   else{
+                       return head->left->remove(i);
+                       this->_size--;
+
+                   }
+
+                }
+                                       return *this;
+
+            }
+            int Tree::size(){
+                return _size;
+                // int countTemp=0;
+                // int left=0;
+                // int right=0;
+                // if (head){
+                //    if (head->right){right=head->right->sizeReset();}
+                //    if (head->left){left=head->left->sizeReset();}
+                // }
+                // countTemp=count;
+                // count=0;
+                // return countTemp;
+            }
+        // int Tree::sizeReset(){
+            
+        //     if(!head){
+        //         return count;
+        //     }
+        //     else{
+        //       count++;
+
+        //         if((head->left)){
+        //          head->left->size();
+        //         }
+        //     }
+        //          if((head->right)){
+        //             head->right->size();
+        //          }
+        //          return count;
+        //     }
+        
+        int Tree::right(int i){
+            if(!contains(i)){
+              throw std::exception();
+            }
+            if(head){
+                if(head->value==i){
+                    if(head->right){
+                        return head->right->head->value;
+                    }
+                    else{
+                     throw std::exception();
+                    }
+                }
+                if((head->value)<i){
+                    return head->right->right(i);
+                }else{
+                    return head->left->right(i);
+                }
+            }
+        }
+        int Tree::left(int i){
+                 if(!contains(i)){
+              throw std::exception();
+            }
+            if(head){
+                if(head->value==i){
+                    if(head->right){
+                        return head->left->head->value;
+                    }
+                    else{
+                     throw std::exception();
+                    }
+                }
+                if((head->value)<i){
+                    return head->right->left(i);
+                }else{
+                    return head->left->left(i);
+                }
+            }
+            }
+        int Tree::parent(int i){
+            if(!head){
+                throw std::exception();
+            }
+            else{
+                if(head->right->head->value==i || head->left->head->value){
+                 return head->value;
+                }
+               else if(head->value < i) {
+                return head->right->parent(i);
+            }
+                else{
+                return head->left->parent(i);
+            }
+        }
+            }
+        void Tree::print(){
+         if (head){
+            if (head->left){head->left->print() ;}
+        cout<<head->value<<" ";
+        if (head->right){head->right->print();}
+    }  
+        }

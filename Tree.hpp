@@ -1,45 +1,34 @@
-#include<stdio.h>
-
+#include <iostream>
 using namespace std;
+namespace ariel
+{
+    class Tree;
+    class node{
+    public:
+        node(int value);
+        ~node();
+        int value;
+        Tree* left;
+        Tree* right;      
+    };
 
-struct node {
-  public:
-  int value;
-  node* left;
-  node* right;
-  node();
-  node(int data);
+    class Tree{
+        public:
+            Tree(); 
+            ~Tree(); 
+            int root();
+            bool contains(int i);
+            Tree& insert(int i);
+            Tree& remove(int i);
+            int size();
+            int sizeReset();
+            int right(int i);
+            int left(int i);
+            int parent(int i);
+            void print();
+        private:
+            node* head;
+    };
 
-//~node();
-  }; 
- // node();
-//  node(int data);
-
-namespace ariel{
-class Tree {
-
-public:
-
-int s;
-node* head;
-node* temp;
-Tree();
-node* find(int i);
-int size();
-void remove(int x);
-bool contains(int x);
-void insert(int x);
-int right(int i);
-int left(int i);
-int parentRec(int data, node* t, node* p);
-int parent(int i);
-void printRec(node* t);
-void print();
-int root();
-//node* findMin(node* t);
-node* insertRec(node* t, int i);
-//node* containsRec(node* t, int i);
-//void removeRec(node* t, int i);
 
 };
-}
