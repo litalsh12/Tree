@@ -204,21 +204,21 @@ Tree& Tree::insert(int i) {
                 throw std::exception();
             }
             else{
-                if((head->right)){
+                if((head->right) && head->right->head){
                 if(head->right->head->value==i){
                  return head->value;
                 }
                 }
-                else if((head->left)){
+                else if((head->left) && head->left->head){
                     if(head->left->head->value==i){
                         return head->value;
                     }
                 }
                 
-            if(head->right && head->value < i){
+            if( head->value < i && head->right ){
                 return head->right->parent(i);
             }
-            else if( head->left&&head->value < i ){
+            else if(head->value < i && head->left ){
                 return head->left->parent(i);
             }}
              return 0;
