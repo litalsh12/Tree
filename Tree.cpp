@@ -225,7 +225,7 @@ Tree& Tree::insert(int i) {
             }
         }
        // return 0;
-           }
+           
 
 
         void Tree::print(){
