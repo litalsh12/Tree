@@ -151,35 +151,34 @@ Tree& Tree::insertTree(Tree* addTree) {
 
 
             int Tree::size(){
-                return _size;
-                // int countTemp=0;
-                // int left=0;
-                // int right=0;
-                // if (head){
-                //    if (head->right){right=head->right->sizeReset();}
-                //    if (head->left){left=head->left->sizeReset();}
-                // }
-                // countTemp=count;
-                // count=0;
-                // return countTemp;
+                int countTemp=0;
+                int left=0;
+                int right=0;
+                if (head){
+                    count++;
+                   if (head->right){right=head->right->sizeReset();}
+                   if (head->left){left=head->left->sizeReset();}
+                }
+                countTemp=count;
+                count=0;
+                return countTemp;
             }
-        // int Tree::sizeReset(){
-            
-        //     if(!head){
-        //         return count;
-        //     }
-        //     else{
-        //       count++;
+         int Tree::sizeReset(){
+            if(!head){
+                return count;
+            }
+            else{
+              count++;
 
-        //         if((head->left)){
-        //          head->left->size();
-        //         }
-        //     }
-        //          if((head->right)){
-        //             head->right->size();
-        //          }
-        //          return count;
-        //     }
+                if((head->left)){
+                 head->left->sizeReset();
+                }
+            }
+                 if((head->right)){
+                    head->right->sizeReset();
+                 }
+                 return count;
+            }
         
         int Tree::right(int i){
       if(!contains(i)){
@@ -230,7 +229,7 @@ Tree& Tree::insertTree(Tree* addTree) {
             }
             //return -2;
             }
-   int Tree::parent(int i){
+        int Tree::parent(int i){
            if(!head){
                 throw std::exception();
             }
