@@ -214,14 +214,14 @@ Tree& Tree::insert(int i) {
                         return head->value;
                     }
                 }
-            }    
+                
             if(head->right && head->value < i){
                 return head->right->parent(i);
             }
             else if( head->left&&head->value < i ){
                 return head->left->parent(i);
-            }
-            else return 0;
+            }}
+             return 0;
             
         }
        // return 0;
