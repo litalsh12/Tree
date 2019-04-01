@@ -121,11 +121,8 @@ Tree& Tree::insert(int i) {
                        this->_size--;
 
                    }
+            }
                 return *this;
-
-                }
-                        throw std::exception();
-
             }
 
 Tree& Tree::insertTree(Tree* addTree) {
