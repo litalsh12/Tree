@@ -2,6 +2,7 @@
 #include "Tree.hpp"
 using namespace std;
 using namespace ariel;
+
 int count=0;
 //counstractor and destructor for Tree
 Tree::Tree():head(NULL) {
