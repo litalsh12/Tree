@@ -184,7 +184,7 @@ Tree& Tree::insert(int i) {
             }
             if(head){
                 if(head->value==i){
-                    if(head->right){
+                    if(head->left){
                         return head->left->head->value;
                     }
                     else{
