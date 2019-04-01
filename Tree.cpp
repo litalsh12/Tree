@@ -103,17 +103,14 @@ Tree& Tree::insert(int i) {
 
                    }
                     else{
-                        //return *this;
-                        if(head->right&&head->right->head){
-                        node* temp=head->right->head;
-                        if(head->left&&head->left->head){
+                        Tree* tempTree=head->right;
                         head=head->left->head;
-                        head->right->head=temp;
-                        return *this;
-                        }
+                        insertTree(tempTree);
+
+                        //head->left=head->left-head->right;
                         }
                     }
-                }
+                
                    else if(head->value < i){
                        return head->right->remove(i);
                    this->_size--;
@@ -124,11 +121,35 @@ Tree& Tree::insert(int i) {
                        this->_size--;
 
                    }
+                return *this;
 
                 }
-                                       return *this;
+                        throw std::exception();
 
             }
+
+Tree& Tree::insertTree(Tree* addTree) {
+    if (head==NULL){
+    head=addTree->head;
+    return *this;
+    }
+    else if(addTree->head->value<head->value){
+        if(head->left==NULL) {
+            head->left=addTree;
+            return *this;
+            }
+        else return head->left->insertTree(addTree);
+        }
+    else{
+            if(head->right == NULL) {
+                head->right=addTree;
+                return *this;}
+            else return  head->right->insertTree(addTree); 
+    }
+    return *this;
+}
+
+
             int Tree::size(){
                 return _size;
                 // int countTemp=0;
@@ -228,7 +249,7 @@ Tree& Tree::insert(int i) {
             if( head->value < i && head->right ){
                 return head->right->parent(i);
             }
-            else if(head->value < i && head->left ){
+            else if(head->value > i && head->left ){
                 return head->left->parent(i);
             }}
              return 0;

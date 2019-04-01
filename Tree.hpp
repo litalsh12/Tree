@@ -21,6 +21,7 @@ namespace ariel
             bool contains(int i);
             Tree& insert(int i);
             Tree& remove(int i);
+            Tree& insertTree(Tree* addTree);
             int size();
             int sizeReset();
             int right(int i);
