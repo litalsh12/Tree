@@ -213,8 +213,9 @@ Tree& Tree::insert(int i) {
                 else{
                 return head->left->parent(i);
             }
-        }
-            }*/
+        }*/
+        return 0;
+            }
         void Tree::print(){
          if (head){
             if (head->left){head->left->print() ;}
