@@ -179,24 +179,25 @@ Tree& Tree::insert(int i) {
             return -1;
         }
         int Tree::left(int i){
-                 if(!contains(i)){
-              throw std::exception();
-            }
-            if(head){
-                if(head->value==i){
-                    if(head->right){
-                        return head->left->head->value;
-                    }
-                    else{
-                     throw std::exception();
-                    }
-                }
-                if((head->value)<i){
-                    return head->right->left(i);
-                }else{
-                    return head->left->left(i);
-                }
-            }
+          //       if(!contains(i)){
+            //  throw std::exception();
+            //}
+           // if(head){
+               // if(head->value==i){
+             //       if(head->right){
+                 //       return head->left->head->value;
+                   // }
+                  //  else{
+            //         throw std::exception();
+              //      }
+          //      }
+            //    if((head->value)<i){
+              //      return head->right->left(i);
+              //  }else{
+                //    return head->left->left(i);
+                //}
+            //}
+            return -2;
             }
         int Tree::parent(int i){
             if(!head){
