@@ -192,9 +192,13 @@ Tree& Tree::insert(int i) {
                     }
                 }
                 if((head->value)<i){
+                    if(head->right){
                     return head->right->left(i);
-                }else{
+                    }
+                }else {
+                    if(head->left){
                     return head->left->left(i);
+                }
                 }
             }
             //return -2;
