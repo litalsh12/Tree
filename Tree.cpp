@@ -102,13 +102,14 @@ Tree& Tree::insert(int i) {
                        return *this;
 
                    }
-                //    else{
+                    else{
+                        return *this;
                 //        node* temp=head->right->head;
                 //        head=head->left->head;
                 //        head->right->head=temp;
                 //        return *this;
 
-                //    }
+                    }
                 }
                    else if(head->value < i){
                        return head->right->remove(i);
@@ -157,24 +158,25 @@ Tree& Tree::insert(int i) {
         //     }
         
         int Tree::right(int i){
-            if(!contains(i)){
-              throw std::exception();
-            }
-            if(head){
-                if(head->value==i){
-                    if(head->right){
-                        return head->right->head->value;
-                    }
-                    else{
-                     throw std::exception();
-                    }
-                }
-                if((head->value)<i){
-                    return head->right->right(i);
-                }else{
-                    return head->left->right(i);
-                }
-            }
+//            if(!contains(i)){
+  //            throw std::exception();
+      //      }
+    //        if(head){
+          //      if(head->value==i){
+        //            if(head->right){
+              //          return head->right->head->value;
+            //        }
+                //    else{
+                  //   throw std::exception();
+        //            }
+          //      }
+            //    if((head->value)<i){
+              //      return head->right->right(i);
+               // }else{
+                 //   return head->left->right(i);
+          //      }
+           // }
+            return -1;
         }
         int Tree::left(int i){
                  if(!contains(i)){
