@@ -74,10 +74,14 @@ Tree& Tree::insert(int i) {
     return *this;
 }
         Tree& Tree::remove(int i){
-    if(!contains(i)){
-      throw std::invalid_argument("remove");
+
+    if(!head){
+      throw std::invalid_argument("remove-head");
             }
-            else if (head){ 
+            else if(head){ 
+                 if(!contains(i)){
+      throw std::invalid_argument("remove-contains");
+            }
                 if(head->value==i){
                   if(!(head->left && head->right))
                    {
