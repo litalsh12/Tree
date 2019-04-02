@@ -83,26 +83,23 @@ Tree& Tree::insert(int i) {
       throw std::invalid_argument("remove-contains");
             }
                 if(head->value==i){
-                  if(!(head->left && head->right))
+                  if(!(head->left) && !(head->right))
                    {
                        head=NULL;
-                        this->_size--;
-
+                        //this->_size--;
                       return *this;
 
                    }
                    else if((!head->left)){
                        head=head->right->head;
-                     this->_size--;
+                    // this->_size--;
 
                        return *this;
                    }
                    else if(!(head->right)){
                        head=head->left->head;
-                        this->_size--;
-
+                     //   this->_size--;
                        return *this;
-
                    }
                     else{
                         Tree* tempTree=head->right;
@@ -111,17 +108,13 @@ Tree& Tree::insert(int i) {
 
                         //head->left=head->left-head->right;
                         }
-                    }
-                
-                   else if(head->value < i){
+                    }else if(head->value < i){
                        return head->right->remove(i);
-                   this->_size--;
-
+                   //this->_size--;
                    }
                    else{
                        return head->left->remove(i);
-                       this->_size--;
-
+                     //  this->_size--;
                    }
             }
                 return *this;
