@@ -75,7 +75,7 @@ Tree& Tree::insert(int i) {
 }
         Tree& Tree::remove(int i){
     if(!contains(i)){
-        throw std::exception();
+      throw std::invalid_argument("remove");
             }
             else if (head){ 
                 if(head->value==i){
