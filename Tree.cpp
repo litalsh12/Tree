@@ -5,7 +5,6 @@ using namespace ariel;
 
 int count=0;
 Tree::Tree():head(NULL) { //Constructor for tree
-    int _size=0;
 }
 Tree::~Tree(){
   delete head;
@@ -27,6 +26,7 @@ bool Tree::contains(int i){
     if (!head){
         return false;
         }
+
     if (head->value==i){
         return true;}
     else if (i<head->value){
@@ -49,15 +49,12 @@ Tree& Tree::insert(int i) {
         }
     if (!head){
     head=new node(i);
-    _size=1;
     return *this;
     }
     else if(i<head->value){
         if(!(head->left)) {
             head->left=new Tree();
             head->left->head=new node(i);
-            head->left->_size=1;
-            this->_size++;
             return *this;
             }
         else return head->left->insert(i);
@@ -65,9 +62,7 @@ Tree& Tree::insert(int i) {
     else{
             if(!(head->right)) {
                 head->right=new Tree();
-                head->right->_size=1;
                 head->right->head=new node(i);
-               this->_size++;
                 return *this;}
             else return  head->right->insert(i);
             
