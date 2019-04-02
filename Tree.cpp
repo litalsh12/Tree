@@ -188,7 +188,8 @@ Tree& Tree::insertTree(Tree* t) {
                     return head->left->right(i);
                 }
                 }
-            }
+            }            throw std::exception();
+
         }
         int Tree::left(int i){
                  if(!contains(i)){
@@ -213,6 +214,8 @@ Tree& Tree::insertTree(Tree* t) {
                 }
                 }
             }
+            throw std::exception();
+
             }
         int Tree::parent(int i){
            if(!head){
