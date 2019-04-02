@@ -4,13 +4,14 @@ using namespace std;
 using namespace ariel;
 
 int count=0;
-Tree::Tree():head(NULL) {
+Tree::Tree():head(NULL) { //Constructor for tree
     int _size=0;
 }
 Tree::~Tree(){
   delete head;
 }
-node::node(int i):right(NULL),left(NULL) {
+node::node(int i):right(NULL),left(NULL) {//Constructor for node
+
     value=i;
 }
 node::~node(){
@@ -112,23 +113,24 @@ Tree& Tree::insert(int i) {
                 return *this;
             }
 
-Tree& Tree::insertTree(Tree* addTree) {
-    if (head==NULL){
-    head=addTree->head;
+Tree& Tree::insertTree(Tree* t) {
+    if (!head){
+    head=t->head;
     return *this;
     }
-    else if(addTree->head->value<head->value){
-        if(head->left==NULL) {
-            head->left=addTree;
-            return *this;
+    else if((t->head->value)<(head->value)){
+        if(!head->left) {
+            head->left=t;
+    return *this;
             }
-        else return head->left->insertTree(addTree);
+        else return head->left->insertTree(t);
         }
     else{
-            if(head->right == NULL) {
-                head->right=addTree;
-                return *this;}
-            else return  head->right->insertTree(addTree); 
+            if(!head->right) {
+                head->right=t;
+    return *this;
+                }
+            else return  head->right->insertTree(t); 
     }
     return *this;
 }

@@ -59,7 +59,6 @@ int main() {
    .CHECK_OK (testtree.insert(7))
    .CHECK_OK (testtree.insert(1))
    .CHECK_EQUAL(testtree.left(9),3)
-   .CHECK_EQUAL(testtree.right(3),15)
    .CHECK_EQUAL(testtree.parent(1),3)
    .CHECK_EQUAL(testtree.root(),9)
 ;
