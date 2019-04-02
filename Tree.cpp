@@ -12,14 +12,14 @@ Tree::~Tree(){
 }
 node::node(int i):right(NULL),left(NULL) {
     value=i;
-
 }
 node::~node(){
   delete right;
   delete left;
 }
 int Tree::root(){
-    if(!head) {throw std::exception();}
+    if(!head) { throw std::invalid_argument("root");
+}
     return head->value;
 }
 bool Tree::contains(int i){
