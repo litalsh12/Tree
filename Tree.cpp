@@ -4,14 +4,12 @@ using namespace std;
 using namespace ariel;
 
 int count=0;
-//counstractor and destructor for Tree
 Tree::Tree():head(NULL) {
     int _size=0;
 }
 Tree::~Tree(){
   delete head;
 }
-//counstractor and destructor for TreeNode
 node::node(int i):right(NULL),left(NULL) {
     value=i;
 
